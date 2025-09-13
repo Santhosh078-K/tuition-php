@@ -1,0 +1,142 @@
+/* File: tuition/assets/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #5e72e4;
+    --secondary-color: #2dce89;
+    --dark-bg: #172b4d;
+    --light-bg: #f4f5f7;
+    --text-dark: #32325d;
+    --text-light: #8898aa;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Main Layout --- */
+#wrapper {
+    transition: all 0.3s ease;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+    transition: padding-left 0.4s ease;
+    padding-left: 260px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* --- Sidebar with Aurora Gradient --- */
+.sidebar-wrapper {
+    width: 260px;
+    min-height: 100vh;
+    color: #fff;
+    transition: margin-left 0.4s ease;
+    position: fixed;
+    z-index: 1000;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c2e4a);
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+}
+
+.sidebar-wrapper .list-group-item {
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    border-left: 5px solid transparent;
+}
+
+.sidebar-wrapper .list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateX(10px);
+}
+
+.sidebar-wrapper .list-group-item.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-weight: 600;
+    border-left: 5px solid var(--secondary-color);
+}
+
+/* --- Top Navigation Bar --- */
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+/* --- 3D-Inspired Stat Cards --- */
+.stat-card {
+    border-radius: 1rem;
+    color: white;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    background-size: 150% 150%;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.03) perspective(1000px) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.card-1 { background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); }
+.card-2 { background-image: linear-gradient(to right, #fc5c7d 0%, #6a82fb 100%); }
+.card-3 { background-image: linear-gradient(to right, #f7971e 0%, #ffd200 100%); }
+.card-4 { background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%); }
+
+/* --- General UI Polish --- */
+.card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.table thead {
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.modal-content {
+    border-radius: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Responsive Design --- */
+#menu-toggle { cursor: pointer; }
+
+@media (max-width: 992px) {
+    #sidebar-wrapper { margin-left: -260px; }
+    #page-content-wrapper { padding-left: 0; }
+    #wrapper.toggled #sidebar-wrapper { margin-left: 0; }
+    .page-title { display: none; }
+}
+
